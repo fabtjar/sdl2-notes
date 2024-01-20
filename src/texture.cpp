@@ -30,48 +30,48 @@ void texture_free(Texture *texture)
 
 Texture* texture_load_from_bmp(SDL_Renderer* renderer, const char* path)
 {
-	SDL_Surface *surface = SDL_LoadBMP(path);
+    SDL_Surface *surface = SDL_LoadBMP(path);
 
-	if (!surface)
-	{
-		printf("Failed to load image %s: %s\n", path, SDL_GetError());
-		return NULL;
-	}
+    if (!surface)
+    {
+        printf("Failed to load image %s: %s\n", path, SDL_GetError());
+        return NULL;
+    }
 
-	SDL_Texture *sdl_texture = SDL_CreateTextureFromSurface(renderer, surface);
-	if (!sdl_texture)
-	{
-		printf("Failed to create texture for %s: %s\n", path, SDL_GetError());
-		return NULL;
-	}
+    SDL_Texture *sdl_texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (!sdl_texture)
+    {
+        printf("Failed to create texture for %s: %s\n", path, SDL_GetError());
+        return NULL;
+    }
 
     Texture *texture = texture_new(sdl_texture, surface->w, surface->h);
-	SDL_FreeSurface(surface);
+    SDL_FreeSurface(surface);
 
-	return texture;
+    return texture;
 }
 
 Texture* texture_load_from_png(SDL_Renderer* renderer, const char* path)
 {
-	SDL_Surface *surface = IMG_Load(path);
+    SDL_Surface *surface = IMG_Load(path);
 
-	if (!surface)
-	{
-		printf("Failed to load image %s: %s\n", path, IMG_GetError());
-		return NULL;
-	}
+    if (!surface)
+    {
+        printf("Failed to load image %s: %s\n", path, IMG_GetError());
+        return NULL;
+    }
 
-	SDL_Texture *sdl_texture = SDL_CreateTextureFromSurface(renderer, surface);
-	if (!sdl_texture)
-	{
-		printf("Failed to create texture for %s: %s\n", path, SDL_GetError());
-		return NULL;
-	}
+    SDL_Texture *sdl_texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (!sdl_texture)
+    {
+        printf("Failed to create texture for %s: %s\n", path, SDL_GetError());
+        return NULL;
+    }
 
     Texture *texture = texture_new(sdl_texture, surface->w, surface->h);
-	SDL_FreeSurface(surface);
+    SDL_FreeSurface(surface);
     
-	return texture;
+    return texture;
 }
 
 void texture_render(Texture *texture, SDL_Renderer* renderer, int x, int y)
