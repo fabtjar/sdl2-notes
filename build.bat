@@ -29,6 +29,8 @@ cl.exe /nologo ^
        /INCREMENTAL:NO ^
        /SUBSYSTEM:CONSOLE
 
+copy %SDL2_LIB%\SDL2.dll bin\
+copy %SDL2_IMAGE_LIB%\SDL2_image.dll bin\
 copy res\arrows.bmp bin\
 copy res\hello_world.bmp bin\
 copy res\frog.png bin\
